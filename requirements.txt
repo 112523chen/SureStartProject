@@ -1,0 +1,5 @@
+streamlit
+re
+tensorflow
+numpy
+nltk
