@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 
-from helper import removeNewLine, removeSpecialCharacters, transformGuess
+from helper import getPrediction
 
 model = pickle.load(open('deepLearningModel.pkl', 'rb'))
 vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
@@ -17,10 +17,6 @@ text = st.text_input('Enter Text Sample', '')
 
 if title is not "" and text is not "":
 
-    text = removeNewLine(text)
-    text = removeSpecialCharacters(text)
-    new_data = title + " " + text
-    new_data = vectorizer.transform(new_data)
-    guess = model.predict(new_data)
+    guess = getPrediction(title, text, vectorizer, model)
 
-    st.header(f"The article sample is {transformGuess(guess)} news")
+    st.header(f"The article sample is {guess} news")
