@@ -19,6 +19,6 @@ def getPrediction(title, text, vectorizer, model):
     text = removeNewLine(text)
     text = removeSpecialCharacters(text)
     new_data = title + " " + text
-    new_data = vectorizer.transform(new_data)
-    guess = transformGuess(model.predict(new_data).round())
+    new_data = vectorizer.transform([new_data]).toarray()
+    guess = transformGuess(model.predict([new_data]).round())
     return guess
