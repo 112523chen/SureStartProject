@@ -22,3 +22,9 @@ if title != "" and text != "":
     guess = getPrediction(title, text, vectorizer, model)
 
     st.header(f"The article sample is {guess} news")
+else:
+    st.info(
+        f"""
+        ⬆️ Enter text first.
+        """
+    )
